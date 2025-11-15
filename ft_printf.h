@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:56:43 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/14 21:23:22 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/15 17:37:42 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 int	ft_putchar_pf(char c);
 int	ft_putstr_pf(char *s);
 int	ft_putnbr_pf(int nbr);
+int	ft_putunbr(unsigned int n);
 int	ft_printf(const char *str, ...);
 int	ft_format(char c, va_list args);
+int	ft_puthex(unsigned int n, char c);
 
 #endif

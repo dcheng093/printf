@@ -6,7 +6,7 @@
 #    By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/14 16:57:29 by dcheng            #+#    #+#              #
-#    Updated: 2025/11/14 18:00:24 by dcheng           ###   ########.fr        #
+#    Updated: 2025/11/15 17:36:31 by dcheng           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = ft_printf.c \
 
 OBJS = ${SRC:.c=.o}
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 

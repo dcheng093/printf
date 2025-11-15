@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:56:04 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/15 17:12:01 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/15 17:39:51 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ int	ft_printf(const char *format, ...)
 			printed += ft_format(*format, args);
 		}
 		else
+		{
 			printed += write(1, format, 1);
 			format++;
 		}
 		va_end(args);
 		return (printed);
+	}
 }
