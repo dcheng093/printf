@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:56:04 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/15 19:25:08 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/15 20:56:05 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_format(char c, va_list args)
 	else if (c == 's')
 		return (ft_putstr_pf(va_arg(args, char *)));
 	else if (c == 'p')
-		return (ft_putptr_pf(va_arg(args, unsigned long)));
+		return ft_putptr_pf(va_arg(args, uintptr_t));
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_pf(va_arg(args, int)));
 	else if (c == 'u')

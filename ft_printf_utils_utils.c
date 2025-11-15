@@ -6,22 +6,32 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 19:19:48 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/15 19:46:26 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/15 20:54:20 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr_pf(unsigned long p)
+int	ft_putptr_pf(uintptr_t ptr)
 {
-	int	i;
+	int						len;
+	unsigned long			div;
 
-	i = 0;
-	i += ft_putstr_pf("0x");
-	if (p == 0)
-		return (i + ft_putchar_pf('0'));
-	i += ft_puthex_pf(p, 'x');
-	return (i);
+	if (!ptr)
+		return (ft_putstr_pf("(nil)"));
+	len = 0;
+	div = 1;
+	while (ptr / div >= 16)
+		div *= 16;
+	len += ft_putstr_pf("0x");
+	while (div > 0)
+	{
+		len++;
+		ft_putchar_pf(HEX_LOW[ptr / div]);
+		ptr %= div;
+		div /= 16;
+	}
+	return (len);
 }
 
 int	udigit_len(unsigned int n)
