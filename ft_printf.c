@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:56:04 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/17 12:40:22 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/17 13:09:01 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,19 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	int		i;
 
 	count = 0;
-	i = 0;
 	va_start(args, format);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			count += ft_format(format[i], args);
+			format++;
+			count += ft_format(*format, args);
 		}
 		else
-			count += write(1, &format[i], 1);
-		i++;
+			count += write(1, format, 1);
+		format++;
 	}
 	va_end(args);
 	return (count);
