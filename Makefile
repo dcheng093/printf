@@ -6,7 +6,7 @@
 #    By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/14 16:57:29 by dcheng            #+#    #+#              #
-#    Updated: 2025/11/15 21:06:02 by dcheng           ###   ########.fr        #
+#    Updated: 2025/11/17 12:42:06 by dcheng           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ NAME = libftprintf.a
 LIBFTDIR = libft
 
 SRC = ft_printf.c \
-	ft_printf_utils.c \
-	ft_printf_utils_utils.c
+	ft_printf_utils.c 
 
 OBJS = ${SRC:.c=.o}
 

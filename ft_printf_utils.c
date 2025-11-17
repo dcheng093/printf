@@ -6,28 +6,17 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:31:12 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/15 20:59:29 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/17 12:43:09 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_pf(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
 int	ft_putstr_pf(char *s)
 {
-	int	i;
-
-	i = 0;
 	if (!s)
-		return (ft_putstr_pf("(null)"));
-	while (*s)
-		i += ft_putchar_pf(*s++);
-	return (i);
+		return (write(1, "(null)", 6), 6);
+	return (write(1, s, ft_strlen(s)));
 }
 
 // int	ft_putnbr_pf 1st version(int nbr)
@@ -48,43 +37,54 @@ int	ft_putstr_pf(char *s)
 // 	return (j);
 // }
 
-int	ft_putnbr_pf(int n)
-{
-	int		i;
-	char	*str;
-
-	str = ft_itoa(n);
-	if (!str)
-		return (0);
-	i = ft_putstr_pf(str);
-	free (str);
-	return (i);
-}
-
-int	ft_putunbr_pf(unsigned int n)
-{
-	int		i;
-	char	*str;
-
-	str = ft_uitoa(n);
-	if (!str)
-		return (0);
-	i = ft_putstr_pf(str);
-	free (str);
-	return (i);
-}
-
-int	ft_puthex_pf(unsigned int n, char c)
+int	ft_putnbr_pf(long n)
 {
 	int	i;
 
 	i = 0;
-	if (n >= 16)
-		i += ft_puthex_pf(n / 16, c);
-	if (c == 'x')
-		i += ft_putchar_pf(HEX_LOW[n % 16]);
-	else
-		i += ft_putchar_pf(HEX_UP[n % 16]);
+	if (n < 0)
+	{
+		i += write(1, "-", 1);
+		n = -n;
+	}
+	return (i + ft_putunbr_pf((unsigned long)n));
+}
+
+int	ft_putunbr_pf(unsigned long n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 10)
+		i += ft_putunbr_pf(n / 10);
+	i += write(1, &DECIMAL[n % 10], 1);
+	return (i);
+}
+
+int	ft_putptr_pf(void *ptr)
+{
+	if (!ptr)
+		return (ft_putstr_pf("(nil)"));
+	return (ft_putstr_pf("0x") + ft_puthex_pf((unsigned long) ptr, HEX_LOW));
+}
+
+int	ft_puthex_pf(unsigned long n, char *base)
+{
+	char	buffer[32];
+	int		i;
+	int		j;
+
+	if (n == 0)
+		return (write(1, "0", 1));
+	i = 0;
+	j = 0;
+	while (n)
+	{
+		buffer[j++] = base[n % 16];
+		n /= 16;
+	}
+	while (j--)
+		i += write(1, &buffer[j], 1);
 	return (i);
 }
 
