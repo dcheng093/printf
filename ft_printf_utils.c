@@ -6,7 +6,7 @@
 /*   By: dcheng <dcheng@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:31:12 by dcheng            #+#    #+#             */
-/*   Updated: 2025/11/17 13:19:21 by dcheng           ###   ########.fr       */
+/*   Updated: 2025/11/17 14:22:50 by dcheng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int	ft_puthex_pf(unsigned long n, char *base)
 // 	ft_putchar_pf('\n');
 // 	ft_puthex_pf(255, HEX_LOW);
 // 	ft_putchar_pf('\n');
-// 	ft_puthex_pf(255, HEX_UP;
+// 	ft_puthex_pf(255, HEX_UP);
 // 	ft_putchar_pf('\n');
 // }
